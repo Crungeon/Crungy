@@ -17,6 +17,7 @@ package cmd
 
 import (
   "fmt"
+  "github.com/Crungeon/crungy/commands"
   "github.com/bwmarrin/discordgo"
   "os"
   "github.com/spf13/cobra"
@@ -25,7 +26,7 @@ import (
 
   homedir "github.com/mitchellh/go-homedir"
   "github.com/spf13/viper"
-
+  log "github.com/sirupsen/logrus"
 )
 
 
@@ -97,7 +98,11 @@ func initConfig() {
 }
 
 func crungy(cmd *cobra.Command, args []string) {
+  // get token loaded from config
   token := viper.GetString("TOKEN")
+  if token == "" {
+     log.Error("missing token")
+  }
   // Create a new Discord session using the provided bot token.
   dg, err := discordgo.New("Bot " + token)
   if err != nil {
@@ -106,7 +111,8 @@ func crungy(cmd *cobra.Command, args []string) {
   }
 
   // Register the messageCreate func as a callback for MessageCreate events.
-  dg.AddHandler(messageCreate)
+  dg.AddHandler(commands.PingPong)
+  dg.AddHandler(commands.Roasted)
 
   // Open a websocket connection to Discord and begin listening.
   err = dg.Open()
@@ -123,25 +129,4 @@ func crungy(cmd *cobra.Command, args []string) {
 
   // Cleanly close down the Discord session.
   dg.Close()
-}
-
-
-// This function will be called (due to AddHandler above) every time a new
-// message is created on any channel that the autenticated bot has access to.
-func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
-
-  // Ignore all messages created by the bot itself
-  // This isn't required in this specific example but it's a good practice.
-  if m.Author.ID == s.State.User.ID {
-    return
-  }
-  // If the message is "ping" reply with "Pong!"
-  if m.Content == "ping" {
-    s.ChannelMessageSend(m.ChannelID, "Pong!")
-  }
-
-  // If the message is "pong" reply with "Ping!"
-  if m.Content == "pong" {
-    s.ChannelMessageSend(m.ChannelID, "Ping!")
-  }
 }
