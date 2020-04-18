@@ -103,8 +103,6 @@ func crungy(cmd *cobra.Command, args []string) {
   token := viper.GetString("TOKEN")
   if token == "" {
     token = os.Getenv("TOKEN")
-    log.Info(os.Environ())
-    log.Info(token)
     if token == "" {
       log.Fatal("missing token")
     }
