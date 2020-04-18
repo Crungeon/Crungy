@@ -16,9 +16,9 @@ limitations under the License.
 package main
 
 import (
-  "github.com/Crungeon/crungy/cmd"
+	"github.com/Crungeon/crungy/cmd"
 )
 
 func main() {
-  cmd.Execute()
+	cmd.Execute()
 }
