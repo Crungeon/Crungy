@@ -85,6 +85,7 @@ func initConfig() {
 
     // Search config in home directory with name ".crungy" (without extension).
     viper.AddConfigPath(home)
+    log.Info(home)
     viper.SetConfigName(".crungy")
     viper.SetConfigType("yaml")
   }
@@ -101,7 +102,10 @@ func crungy(cmd *cobra.Command, args []string) {
   // get token loaded from config
   token := viper.GetString("TOKEN")
   if token == "" {
-     log.Error("missing token")
+    token = os.Getenv("TOKEN")
+    if token == "" {
+      log.Fatal("missing token")
+    }
   }
   // Create a new Discord session using the provided bot token.
   dg, err := discordgo.New("Bot " + token)
