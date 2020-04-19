@@ -1,6 +1,9 @@
 package commands
 
-import "github.com/bwmarrin/discordgo"
+import (
+	"github.com/bwmarrin/discordgo"
+	"strings"
+)
 
 // This function will be called (due to AddHandler above) every time a new
 // message is created on any channel that the autenticated bot has access to.
@@ -12,7 +15,7 @@ func Roasted(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	if m.Content == "gottem" {
+	if strings.Contains(m.Content, "gottem") {
 		s.ChannelMessageSend(m.ChannelID, ":boom: Roasted!")
 	}
 
