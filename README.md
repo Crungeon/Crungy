@@ -51,3 +51,4 @@ docker run --env-file .env crungeon/crungy:latest
 * [ ] log to [boltdb](https://github.com/boltdb/bolt)
 * [ ] [goreleaser](https://goreleaser.com) to package all the things
 * [X] Makefile target: build docker container
+* [X] Made you look
