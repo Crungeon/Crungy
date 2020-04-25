@@ -117,7 +117,6 @@ func crungy(cmd *cobra.Command, args []string) {
 	dg.AddHandler(commands.PingPong)
 	dg.AddHandler(commands.Roasted)
 	dg.AddHandler(commands.SharkTank)
-	dg.AddHandler(commands.love)
 	dg.AddHandler(commands.luketime)
 	dg.AddHandler(commands.Dachshund)
 
