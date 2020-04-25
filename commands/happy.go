@@ -28,7 +28,7 @@ func Happy(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	if !strings.Contains("make me happy", strings.ToLower(m.Content)) {
+	if !strings.Contains(strings.ToLower(m.Content), "make me happy") {
 		return
 	}
 
