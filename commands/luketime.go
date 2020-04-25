@@ -4,6 +4,7 @@ import (
     "fmt"
 	"regexp"
 	"github.com/bwmarrin/discordgo"
+	"strconv"
 )
 
 // This function will be called (due to AddHandler above) every time a new
