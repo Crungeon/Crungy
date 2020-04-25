@@ -112,12 +112,17 @@ func crungy(cmd *cobra.Command, args []string) {
 	}
 
 	// Register the messageCreate func as a callback for MessageCreate events.
+	dg.AddHandler(commands.Happy)
 	dg.AddHandler(commands.DingDong)
 	dg.AddHandler(commands.PingPong)
 	dg.AddHandler(commands.Roasted)
 	dg.AddHandler(commands.SharkTank)
+<<<<<<< HEAD
 	dg.AddHandler(commands.love)
 	dg.AddHandler(commands.luketime)
+=======
+	dg.AddHandler(commands.Dachshund)
+>>>>>>> origin/master
 
 	// Open a websocket connection to Discord and begin listening.
 	err = dg.Open()

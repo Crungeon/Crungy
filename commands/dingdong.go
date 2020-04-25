@@ -4,7 +4,6 @@ import (
 	"strings"
 
 	"github.com/bwmarrin/discordgo"
-	log "github.com/sirupsen/logrus"
 )
 
 // This function will be called (due to AddHandler above) every time a new
@@ -15,8 +14,6 @@ func DingDong(s *discordgo.Session, m *discordgo.MessageCreate) {
 	if m.Author.ID == s.State.User.ID {
 		return
 	}
-
-	log.Info(m.Author.Username, ": ", m.Content)
 
 	// If the message is "ding" reply with "Dong!"
 	if strings.ToLower(m.Content) == "ding" {
