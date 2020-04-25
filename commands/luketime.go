@@ -22,7 +22,7 @@ func Love(s *discordgo.Session, m *discordgo.MessageCreate) {
 		minstr := string(re.Find([]byte(m.Content)))
 		minraw, _ := strconv.Atoi(minstr)
 
-		minact = minraw*2 + 5
+		minact := minraw*2 + 5
 
 		if minact > (minraw + 45) {
 			minact = (minraw + 45)
