@@ -1,10 +1,10 @@
 package commands
 
 import (
-    "fmt"
 	"regexp"
-	"github.com/bwmarrin/discordgo"
 	"strconv"
+
+	"github.com/bwmarrin/discordgo"
 )
 
 // This function will be called (due to AddHandler above) every time a new
@@ -17,18 +17,18 @@ func Love(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	if matched, _ := regexp.MatchString("^luke time", m.Content ); matched {
-        re := regexp.MustCompile(`[0-9]{2}`)
+	if matched, _ := regexp.MatchString("^luke time", m.Content); matched {
+		re := regexp.MustCompile(`[0-9]{2}`)
 		minstr := string(re.Find([]byte(m.Content)))
-		minraw,_ := strconv.Atoi(minstr)
+		minraw, _ := strconv.Atoi(minstr)
 
-		minact = minraw * 2 + 5
+		minact = minraw*2 + 5
 
-		if minact > (minraw + 45){
+		if minact > (minraw + 45) {
 			minact = (minraw + 45)
 		}
 
 		message := "Luke will arrive in" + strconv.Itoa(minact) + "min."
 		s.ChannelMessageSend(m.ChannelID, message)
-    }
+	}
 }

@@ -117,12 +117,9 @@ func crungy(cmd *cobra.Command, args []string) {
 	dg.AddHandler(commands.PingPong)
 	dg.AddHandler(commands.Roasted)
 	dg.AddHandler(commands.SharkTank)
-<<<<<<< HEAD
 	dg.AddHandler(commands.love)
 	dg.AddHandler(commands.luketime)
-=======
 	dg.AddHandler(commands.Dachshund)
->>>>>>> origin/master
 
 	// Open a websocket connection to Discord and begin listening.
 	err = dg.Open()
