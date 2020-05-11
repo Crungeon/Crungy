@@ -1,0 +1,7 @@
+version: '3'
+services:
+  crungy:
+    container_name: cruny
+    env_file:
+      - ~/.env
+    build: .
