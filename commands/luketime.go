@@ -18,7 +18,7 @@ func Luketime(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 
 	if matched, _ := regexp.MatchString("^luke time", m.Content); matched {
-		re := regexp.MustCompile(`[0-9]{2}`)
+		re := regexp.MustCompile(`[0-9]{1,4}`)
 		minstr := string(re.Find([]byte(m.Content)))
 		minraw, _ := strconv.Atoi(minstr)
 
