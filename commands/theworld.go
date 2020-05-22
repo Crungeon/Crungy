@@ -2,7 +2,6 @@ package commands
 
 import (
 	"regexp"
-	"strconv"
 
 	"github.com/bwmarrin/discordgo"
 )

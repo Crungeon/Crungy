@@ -15,5 +15,11 @@ container:
 run-container:
 	docker run --env-file .env crungeon/crungy:$(VER)
 
+pi-deploy:
+	git checkout master
+	git pull
+	COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 docker-compose build
+	docker-compose run -d crungy
+
 deploy: test container
 	docker push crungeon/crungy

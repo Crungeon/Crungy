@@ -2,6 +2,7 @@ version: '3'
 services:
   crungy:
     container_name: cruny
+    image: crungy:latest
     env_file:
-      - ~/.env
+      - .env
     build: .
